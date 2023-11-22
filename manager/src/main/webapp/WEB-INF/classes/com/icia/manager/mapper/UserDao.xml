@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.icia.manager.dao.UserDao">
+  
+  <!-- dao는 인터페이스임!! 제막 까먹지마 -->
+  
+ <resultMap type="com.icia.manager.model.User" id="userResultMap">
+   <id column="USER_ID" property="userId" />  <!-- 여기서 property="" 에 들어가는 것은 model에 있는 User.java의 인스턴스 변수들임!!! 까먹지마 -->
+   <result column="USER_PWD" property="userPwd" />
+   <result column="USER_NAME" property="userName" />
+   <result column="USER_EMAIL" property="userEmail" />
+   <result column="STATUS" property="status" />
+   <result column="REG_DATE" property="regDate" />
+ </resultMap>
+  
+  <select id="userList" parameterType="com.icia.manager.model.User" resultMap="userResultMap">  <!-- 여기 resultMap=""에 들어가는 값음 <resultMap>태그의 id값과 동일해야함 -->
+  SELECT USER_ID,
+	       USER_PWD,
+	       USER_NAME,
+	       USER_EMAIL,
+	       STATUS,
+	       REG_DATE
+	 FROM (SELECT ROWNUM AS RNUM,
+	               USER_ID,
+	               USER_PWD,
+	               USER_NAME,
+	               USER_EMAIL,
+	               STATUS,
+	               REG_DATE
+	          FROM (SELECT USER_ID,
+	                       NVL(USER_PWD,'') AS USER_PWD,
+	                       NVL(USER_NAME,'') AS USER_NAME,
+	                       NVL(USER_EMAIL,'') AS USER_EMAIL,
+	                       NVL(STATUS,'') AS STATUS,
+	                       NVL(TO_CHAR(REG_DATE, 'YYYY.MM.DD HH24:MI:SS'), '') AS REG_DATE
+	                  FROM TBL_USER
+	                  WHERE 1 = 1
+	                  
+	                  <if test='userId != null and userId != "" '>
+	                    AND USER_ID LIKE '%' || #{userId} || '%'
+	                  </if>
+	                  <if test='userName != null and userName != "" '>
+	                    AND USER_NAME LIKE '%'|| #{userName} ||'%'
+	                  </if>
+	                  <if test='status != null and status != "" '>
+	                    AND STATUS LIKE '%'|| #{status} || '%'
+	                  </if>
+	                    ORDER BY REG_DATE DESC))
+    WHERE RNUM <![CDATA[>=]]> #{startRow}
+      AND RNUM <![CDATA[<=]]> #{endRow}
+  </select>
+ <!-- '%' || #{userId} || '%'에는 컨트롤러에서 넘어올때 USER_ID 객체안에 값을넣어서 여기로 옴 --> 
+  
+  
+  
+  <!-- insert, update, delete는 결과건수를 리턴하기 때문에 자동으로 int여서 리턴타입 안써줘도 됨 -->
+  <!-- select은  쿼리 결과가 건수일떄는 resultType을 쓰고 객체를 반환하면 resultMap을 써줘야한다!! -->
+ <select id="userListCount" parameterType="com.icia.manager.model.User" resultType="int">
+ SELECT COUNT(USER_ID) AS CNT
+    FROM TBL_USER
+    WHERE 1=1
+    <if test='userId != null and userId != "" '>
+    	AND USER_ID LIKE '%'|| #{userId}|| '%'
+    </if>
+    <if test='userName != null and userName != "" '>
+    	AND USER_NAME LIKE '%'|| #{userName} ||'%'
+    </if>
+    <if test='status != null and status != "" '>
+    	AND STATUS LIKE '%'|| #{status} ||'%'
+    </if>
+ </select>
+  
+
+<!-- 사용자 조회 -->
+<!-- 이 쿼리로 들어오는 매개변수는 관리자가 지정한 USERId값 하나이기 떄문에 parameterType을 String 타입으로 함 -->
+<select id="userSelect" parameterType="string" resultMap="userResultMap">
+SELECT USER_ID,
+        NVL(USER_PWD, '') AS USER_PWD,
+        NVL(USER_NAME, '') AS USER_NAME,
+        NVL(USER_EMAIL, '') AS USER_EMAIL,
+        NVL(STATUS, 'N') AS STATUS,
+        NVL(TO_CHAR(REG_DATE, 'YYYY.MM.DD HH24:MI:SS'), '') AS REG_DATE
+   FROM TBL_USER
+   WHERE USER_ID = #{value}
+</select>
+  
+
+<!-- 사용자 정보 수정 -->
+<!-- update,delete insert는 리턴타입 안써줘도 됨 자동으로 int니까 -->
+<update id="userUpdate" parameterType="com.icia.manager.model.User">
+UPDATE TBL_USER
+    SET USER_PWD = #{userPwd},
+        USER_NAME = #{userName},
+        USER_EMAIL = #{userEmail},
+        STATUS = #{status}
+  WHERE
+        USER_ID = #{userId}
+</update>
+  
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.icia.manager.dao.AdminDao"> <!-- dao 랑 mapping 시킴 -->
+  
+  
+<resultMap type="com.icia.manager.model.Admin" id="adminResultMap">
+	<id column="ADM_ID" property="admId" /> 		<!-- 아이디는 PK라서 id로 해줌-->
+	<result column="ADM_PWD" property="admPwd" />	<!-- 나머지는 PK가 아니라서 result로 해줌 -->
+	<result column="ADM_NAME" property="admName" />
+	<result column="STATUS" property="status" />
+	<result column="REG_DATE" property="regDate" />
+</resultMap>
+  
+<select id="adminSelect" parameterType="string" resultMap="adminResultMap">
+  SELECT ADM_ID,
+        NVL(ADM_PWD, '') AS ADM_PWD,
+        NVL(ADM_NAME, '') AS ADM_NAME,
+        NVL(STATUS,'N') AS STATUS,
+        NVL(TO_CHAR(REG_DATE, 'YYYY.MM.DD HH24:MI:SS'), '') AS REG_DATE
+  FROM TBL_ADMIN
+  WHERE ADM_ID = #{value}
+</select>
+  
+</mapper>
