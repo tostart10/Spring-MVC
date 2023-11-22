@@ -1,3 +1,5 @@
+<img src="https://capsule-render.vercel.app/api?type=모양&color=색상코드&height=높이&section=header&text=텍스트&fontSize=텍스트크기" />
+
 Spring MVC 패턴을 이용한 계층형 게시판 만들기
 
 KakaoPay API 사용한 간편 단건 결제 구현하기
