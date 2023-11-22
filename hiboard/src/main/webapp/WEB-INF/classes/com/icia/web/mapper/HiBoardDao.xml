@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.icia.web.dao.HiBoardDao">
+
+<!-- 게시물 resultMap  정의 -->
+<resultMap id="hiBoardResultMap" type="com.icia.web.model.HiBoard">
+	<id column="HIBBS_SEQ" property="hiBbsSeq" />
+     <result column="USER_ID" property="userId" />
+    <result column="USER_NAME" property="userName" />
+    <result column="USER_EMAIL" property="userEmail" />
+    <result column="HIBBS_GROUP" property="hiBbsGroup" />
+   <result column="HIBBS_ORDER" property="hiBbsOrder" />
+    <result column="HIBBS_INDENT" property="hiBbsIndent" />
+    <result column="HIBBS_TITLE" property="hiBbsTitle" />
+     <result column="HIBBS_CONTENT" property="hiBbsContent" />
+    <result column="HIBBS_READ_CNT" property="hiBbsReadCnt" />
+    <result column="HIBBS_PARENT" property="hiBbsParent" />
+    <result column="REG_DATE" property="regDate" />
+</resultMap>
+
+
+<!-- 첨부파일 resultMap -->
+<resultMap id="hiBoardFileResultMap" type="com.icia.web.model.HiBoardFile">
+	<id column="HIBBS_SEQ" property="hiBbsSeq" />
+	<id column="FILE_SEQ" property="fileSeq" />
+	<id column="FILE_ORG_NAME" property="fileOrgName" />
+	<id column="FILE_NAME" property="fileName" />
+	<id column="FILE_EXT" property="fileExt" />
+	<id column="FILE_SIZE" property="fileSize" />
+	<id column="REG_DATE" property="regDate" />
+</resultMap>
+
+<!-- 게시물 등록 -->
+<!-- insert, update, delete는 처리건수를 반환하기 때문에 반환타입이 자동으로? int 라 반환타입 명시 안해줘도 됨 -->
+<!-- //HIBBS_READ_CNT 는 초기 값을 0으로 할거임 -->
+<!-- hiBbsGroup에는  hiBbsSeq값을 그대로 넣을 거임
+HIBBS_GROUP, HIBBS_ORDER, HIBBS_INDENT 이 세게는 댓글에 사용할 컬럼
+    
+    keyProperty="hiBbsSeq" 값과 #{hiBbsSeq}의 값이 같아야함
+    order="BEFORE" -> 쿼리 날리기전 실행해라
+    -->
+<insert id="boardInsert" parameterType="com.icia.web.model.HiBoard">
+<!-- 선행처리기(시퀀스번호 생성) -> INSERT하기ㅣ전에 해줘야 시퀀스 들어감 -->
+<selectKey resultType="long" keyProperty="hiBbsSeq" order="BEFORE">
+	SELECT SEQ_HIBOARD_SEQ.NEXTVAL FROM DUAL
+</selectKey>
+
+INSERT INTO TBL_HIBOARD (
+    HIBBS_SEQ,
+    USER_ID,
+    HIBBS_GROUP,
+    HIBBS_ORDER,
+    HIBBS_INDENT,
+    HIBBS_TITLE,
+    HIBBS_CONTENT,
+    HIBBS_READ_CNT,
+    HIBBS_PARENT,
+    REG_DATE
+) VALUES (
+    #{hiBbsSeq},
+    #{userId},
+    #{hiBbsSeq},
+    #{hiBbsOrder},
+    #{hiBbsIndent},
+    #{hiBbsTitle},
+    #{hiBbsContent},
+    0,   
+    #{hiBbsParent},
+    SYSDATE
+)
+</insert>
+
+
+<!-- 첨부파일 등록 -->
+<insert id="boardFileInsert" parameterType="com.icia.web.model.HiBoardFile">
+
+Insert Into Tbl_Hiboard_File (
+    Hibbs_Seq,
+    File_Seq,
+    File_Org_Name,
+    File_Name,
+    File_Ext,
+    File_Size,
+    Reg_Date
+) Values (
+    #{hiBbsSeq},
+    #{fileSeq},
+    #{fileOrgName},
+    #{fileName},
+    #{fileExt},
+    #{fileSize},
+    SYSDATE
+)
+</insert>
+
+<select id="boardList" parameterType="com.icia.web.model.HiBoard" resultMap="hiBoardResultMap">
+SELECT HIBBS_SEQ,
+         USER_ID,
+         USER_NAME,
+         USER_EMAIL,
+         HIBBS_GROUP,
+         HIBBS_ORDER,
+         HIBBS_INDENT,
+         HIBBS_TITLE,
+         HIBBS_CONTENT,
+         HIBBS_READ_CNT,
+         HIBBS_PARENT,
+         REG_DATE
+    FROM (SELECT ROWNUM RNM,
+            HIBBS_SEQ,
+             USER_ID,
+             USER_NAME,
+             USER_EMAIL,
+             HIBBS_GROUP,
+             HIBBS_ORDER,
+             HIBBS_INDENT,
+             HIBBS_TITLE,
+             HIBBS_CONTENT,
+             HIBBS_READ_CNT,
+             HIBBS_PARENT,
+             REG_DATE
+        FROM(SELECT  HIBBS_SEQ,
+                    NVL(A.USER_ID, '') AS USER_ID,
+                    NVL(B.USER_NAME,'') AS USER_NAME,
+                    NVL(B.USER_EMAIL,'') AS USER_EMAIL,
+                    NVL(HIBBS_GROUP,0) AS HIBBS_GROUP,
+                    NVL(HIBBS_ORDER,0) AS HIBBS_ORDER,
+                    NVL(HIBBS_INDENT,0) AS HIBBS_INDENT,
+                    NVL(HIBBS_TITLE,'') AS HIBBS_TITLE,
+                    NVL(HIBBS_CONTENT,'') AS HIBBS_CONTENT,
+                    NVL(HIBBS_READ_CNT,'') AS HIBBS_READ_CNT,
+                    NVL(HIBBS_PARENT,0) AS HIBBS_PARENT,
+                    TO_CHAR(A.REG_DATE, 'YYYY.MM.DD HH24:MI:SS') AS REG_DATE
+                FROM TBL_HIBOARD A, TBL_USER B
+                WHERE A.USER_ID = B.USER_ID
+ <if test='searchType != null and searchType != "" and searchValue != null and searchValue !="" '> 
+ 	<choose>
+ 		<when test='searchType == "1"  '>              
+                AND B.USER_NAME LIKE '%' || #{searchValue} || '%'
+        </when>
+        <when test='searchType == "2" '>
+                AND A.HIBBS_TITLE LIKE '%' || #{searchValue} || '%'
+        </when>
+        <when test='searchType == "3" '>
+                AND DBMS_LOB.INSTR(A.HIBBS_CONTENT, #{searchValue} ) > 0
+		</when>
+	</choose>
+</if> 
+               ORDER BY A.HIBBS_GROUP DESC, A.HIBBS_ORDER ASC))
+    WHERE RNM <![CDATA[>=]]> #{startRow}
+      AND RNM <![CDATA[<=]]> #{endRow}
+</select>
+
+<!-- 총 게시물 수 -->
+<select id="boardListCount" parameterType="com.icia.web.model.HiBoard" resultType="long">
+SELECT  COUNT(HIBBS_SEQ) AS CNT
+   FROM TBL_HIBOARD A, TBL_USER B
+   WHERE A.USER_ID = B.USER_ID
+<if test='searchType != null and searchType != "" and searchValue != null and searchValue !="" '>  
+    <choose>
+    	<when test='searchType == "1"'>
+	     	AND B.USER_NAME LIKE '%' || #{searchValue} || '%'
+	    </when>
+	    <when test='searchType == "2" '> 
+	     	AND A.HIBBS_TITLE LIKE '%' || #{searchValue} || '%'
+	     </when>
+	     <when test='searchType == "3" '>
+	     	AND DBMS_LOB.INSTR(A.HIBBS_CONTENT, #{searchValue}) > 0
+     	</when>
+     </choose>
+</if>
+</select>
+
+
+<!-- 게시물 조회 -->
+<!-- 이거 순서 중요함 (전제조건은 로직이 위에서 아래로 흐른다는것)
+ WHERE A.HIBBS_SEQ = #{value}
+    AND A.USER_ID = B.USER_ID  으로 하는 것이
+    
+    WHERE A.USER_ID = B.USER_ID
+    AND A.HIBBS_SEQ = #{value}  보다 매우 빠름
+    
+    왜? => 비교하는 건수의 차이가 크기 떄문에
+    시퀀스는 유일한 값이여서 비교대상이 1개 밖에 없는데
+    테이블에 있는 아이디가 몇천만건 있다면 그 몇천만건 중에 해당아이디를 찾는데 오래걸림
+     -->
+<select id="boardSelect" parameterType="long" resultMap="hiBoardResultMap">
+ SELECT  HIBBS_SEQ,
+        NVL(A.USER_ID, '') AS USER_ID,
+        NVL(B.USER_NAME,'') AS USER_NAME,
+        NVL(B.USER_EMAIL,'') AS USER_EMAIL,
+        NVL(HIBBS_GROUP,0) AS HIBBS_GROUP,
+        NVL(HIBBS_ORDER,0) AS HIBBS_ORDER,
+        NVL(HIBBS_INDENT,0) AS HIBBS_INDENT,
+        NVL(HIBBS_TITLE,'') AS HIBBS_TITLE,
+        NVL(HIBBS_CONTENT,'') AS HIBBS_CONTENT,
+        NVL(HIBBS_READ_CNT,'') AS HIBBS_READ_CNT,
+        NVL(HIBBS_PARENT,0) AS HIBBS_PARENT,
+        TO_CHAR(A.REG_DATE, 'YYYY.MM.DD HH24:MI:SS') AS REG_DATE
+    FROM TBL_HIBOARD A, TBL_USER B
+    WHERE A.HIBBS_SEQ = #{value}
+    AND A.USER_ID = B.USER_ID
+</select>
+
+<!-- 첨부파일 조회 -->
+<select id="boardFileSelect" parameterType="long" resultMap="hiBoardFileResultMap">
+SELECT HIBBS_SEQ,
+        FILE_SEQ,
+        NVL(FILE_ORG_NAME,'') AS FILE_ORG_NAME,
+        NVL(FILE_NAME, '') AS FILE_NAME,
+        NVL(FILE_EXT, '') AS FILE_EXT,
+        NVL(FILE_SIZE, 0) AS FILE_SIZE,
+        TO_CHAR(REG_DATE, 'YYYY.MM.DD HH24:MI:SS') AS REG_DATE
+  FROM TBL_HIBOARD_FILE
+  WHERE HIBBS_SEQ = #{value}
+  AND FILE_SEQ = 1
+</select>
+
+
+<update id="boardReadCntPlus" parameterType="long">
+UPDATE TBL_HIBOARD
+    SET HIBBS_READ_CNT = HIBBS_READ_CNT + 1
+    WHERE HIBBS_SEQ = #{value}
+</update>
+
+
+<!-- HIBS-GROUP의 HIBBS_ORDER 수정 -->
+<update id="boardGroupOrderUpdate" parameterType="com.icia.web.model.HiBoard">
+UPDATE TBL_HIBOARD
+    SET HIBBS_ORDER = HIBBS_ORDER + 1
+    WHERE HIBBS_GROUP = #{hiBbsGroup}
+    AND HIBBS_ORDER  <![CDATA[>=]]> #{hiBbsOrder}
+</update>
+
+
+<!-- 게시물 답글 등록 -->
+<insert id="boardReplyInsert" parameterType="com.icia.web.model.HiBoard">
+<!-- 선행처리기(시퀀스번호 생성) -> INSERT하기ㅣ전에 해줘야 시퀀스 들어감 -->
+<selectKey resultType="long" keyProperty="hiBbsSeq" order="BEFORE">
+	SELECT SEQ_HIBOARD_SEQ.NEXTVAL FROM DUAL
+</selectKey>
+INSERT INTO TBL_HIBOARD (
+    HIBBS_SEQ,
+    USER_ID,
+    HIBBS_GROUP,
+    HIBBS_ORDER,
+    HIBBS_INDENT,
+    HIBBS_TITLE,
+    HIBBS_CONTENT,
+    HIBBS_READ_CNT,
+    HIBBS_PARENT,
+    REG_DATE
+) VALUES (
+    #{hiBbsSeq},
+    #{userId},
+    #{hiBbsGroup},
+    #{hiBbsOrder},
+    #{hiBbsIndent},
+    #{hiBbsTitle},
+    #{hiBbsContent},
+    0,
+    #{hiBbsParent},
+    SYSDATE
+)
+
+
+</insert>
+
+
+<!-- 게시물 수정 -->
+<update id="boardUpdate" parameterType="com.icia.web.model.HiBoard">
+UPDATE TBL_HIBOARD
+    SET HIBBS_TITLE = #{hiBbsTitle},
+        HIBBS_CONTENT = #{hiBbsContent}
+  WHERE HIBBS_SEQ = #{hiBbsSeq}
+</update>
+<!-- #{}에는 hiBoard에 있는 인스턴스 변수명 -->
+
+
+<!-- 첨부파일 삭제 -->
+<delete id="boardFileDelete" parameterType="long" >
+DELETE FROM TBL_HIBOARD_FILE
+WHERE HIBBS_SEQ = #{hiBbsSeq}
+</delete>
+
+
+<!-- 게시물 삭제 -->
+<delete id="boardDelete" parameterType="long">
+DELETE FROM TBL_HIBOARD
+    WHERE HIBBS_SEQ = #{value}
+</delete>
+
+
+<!-- 게시물 삭제시 답변글수 조회 -->
+<!-- 삭제하려는 게시물에 답글이 있는지 count 함 -->
+<!-- 만약 seq를  HIBBS_PARENT 값으로 쓰고 있는 것이 있어 count 된다면 답글이 존재하는 것이므로 삭제 불가-->
+<!-- 삭제하려는 게시물의 게시물 번호를 parent로 쓰고 있는 게시물이 있나 -> 삭제하려는 게시물에 답글이 존재하는가를 확인 -->
+<!-- 현재 삭제하려는 게시물 입장에서 게시물에 딸린 답글이 있는 지를 확인함 -->
+<select id="boardAnswersCount" parameterType="long" resultType="int" >
+SELECT COUNT(HIBBS_SEQ) AS CNT
+    FROM TBL_HIBOARD
+    WHERE HIBBS_PARENT = #{value}
+</select>
+
+
+
+
+
+</mapper>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.icia.web.dao.UserDaoTest">
+
+  <resultMap type="com.icia.web.model.UserTest" id="userResultMapTest">
+     <id column="USER_ID" property="userId" />
+     <result column="USER_PWD" property="userPwd" />
+     <result column="USER_NAME" property="userName" />
+     <result column="USER_EMAIL" property="userEmail" />
+     <result column="USER_HOBBY" property="userHobby"/>
+     <result column="STATUS" property="status" />
+     <result column="REG_DATE" property="regDate" />
+  </resultMap>
+  
+    <select id="userSelectTest" parameterType="String" resultMap="userResultMapTest">     
+    SELECT USER_ID,
+          NVL(USER_PWD, '') AS USER_PWD,
+          NVL(USER_NAME, '') AS USER_NAME,
+          NVL(USER_EMAIL, '') AS USER_EMAIL,
+          NVL(USER_HOBBY, '') AS USER_HOBBY,
+          NVL(STATUS,'N') AS STATUS,
+          NVL(TO_CHAR(REG_DATE, 'YYYY.MM.DD HH24:MI:SS'), '') AS REG_DATE
+      FROM TBL_USER_INFO_TEST
+    WHERE USER_ID = #{value}
+  </select>   
+   
+   
+   <insert id="userInsertTest" parameterType="com.icia.web.model.UserTest">   
+     INSERT INTO TBL_USER_INFO_TEST (
+       USER_ID,
+       USER_PWD,
+       USER_NAME,
+       USER_EMAIL,
+       USER_HOBBY,
+       STATUS,
+       REG_DATE
+   ) VALUES (
+       #{userId},
+      #{userPwd},
+      #{userName}, 
+      #{userEmail}, 
+      #{userHobby}, 
+      #{status}, 
+      SYSDATE
+   )
+  </insert>
+   
+  
+</mapper>
