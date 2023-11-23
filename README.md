@@ -28,7 +28,10 @@ KakaoPay API 사용한 간편 단건 결제 구현하기
 <img width="921" alt="게시물 보기" src="https://github.com/tostart10/hiboard/assets/113872709/9b3a8a8d-e1a4-4e98-9df6-8128e139cf33">
 
 
-<img src = "https://github.com/tostart10/hiboard/assets/113872709/665a1cc0-1a47-4391-bcef-8797616451c7" width="200" height="100">
+
+
+이게 크기조절테스트하고 있는 게시물 수정임
+<img src = "https://github.com/tostart10/hiboard/assets/113872709/665a1cc0-1a47-4391-bcef-8797616451c7" width="40%" height="40%">
 
 ![게시물 수정](https://github.com/tostart10/hiboard/assets/113872709/665a1cc0-1a47-4391-bcef-8797616451c7)
 
