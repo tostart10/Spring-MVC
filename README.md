@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=00c9f2&height=150&section=header&text=Spring%20MVC를%20이용한%20계층형%20게시판%20만들기&fontSize=40)
+![header](https://capsule-render.vercel.app/api?type=waving&color=99ccff&height=150&section=header&text=Spring%20MVC를%20이용한%20계층형%20게시판%20만들기&fontSize=40)
 
 
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
@@ -87,4 +87,4 @@ KakaoPay API 사용한 간편 단건 결제 구현하기
 
 
 
-<img src="https://capsule-render.vercel.app/api?type=wave&color=00c9f2&height=150&section=footer&text=%20&fontSize=40" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=00c9f2&height=150&section=footer&text=%20&fontSize=40" />
