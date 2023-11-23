@@ -139,26 +139,26 @@
 
 
 1. 관리자 로그인
-<img width="834" alt="관리자로그인" src="https://github.com/tostart10/hiboard/assets/113872709/b106a3cc-8092-4586-9f51-86116f10ed99">
+<img width="75%" height="75%" alt="관리자로그인" src="https://github.com/tostart10/hiboard/assets/113872709/b106a3cc-8092-4586-9f51-86116f10ed99">
 
 
 
 
 2. 관리자 홈
-<img width="950" alt="관리자 홈" src="https://github.com/tostart10/hiboard/assets/113872709/986241d4-8637-48e2-8d08-2892ff1212b2">
+<img width="75%" height="75%" alt="관리자 홈" src="https://github.com/tostart10/hiboard/assets/113872709/986241d4-8637-48e2-8d08-2892ff1212b2">
 
 
 
 
 3. 사이트에 가입한 회원이 없을 경우 기본적으로 회원정보가 없음 이 뜨도록 설정
 등록된 회원이 없어 데이터가 없을 경우 '등록된 회원정보가 없습니다.' 라는 문구가 뜨도록 설정
-<img width="941" alt="관리자-회원 데이터 없을때" src="https://github.com/tostart10/hiboard/assets/113872709/d4664153-0a70-4e62-bd45-81102d4641f4">
+<img width="75%" height="75%" alt="관리자-회원 데이터 없을때" src="https://github.com/tostart10/hiboard/assets/113872709/d4664153-0a70-4e62-bd45-81102d4641f4">
 
 
 
 
 4. 회원 정보 조회/검색
-<img width="943" alt="관리자-검색" src="https://github.com/tostart10/hiboard/assets/113872709/1db9b310-3aa5-4188-8657-a755bb7f2118">
+<img width="75%" height="75%" alt="관리자-검색" src="https://github.com/tostart10/hiboard/assets/113872709/1db9b310-3aa5-4188-8657-a755bb7f2118">
 
 
 
