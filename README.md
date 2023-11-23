@@ -55,16 +55,16 @@ KakaoPay API 사용한 간편 단건 결제 구현하기
 <img width="75%" alt="카카오페이QR2" src="https://github.com/tostart10/hiboard/assets/113872709/247058e3-88f3-4ce7-83b3-917396c2337e">
 
 
-<img alt="카카오페이3" src = "https://github.com/tostart10/hiboard/assets/113872709/53124c56-e0a1-4b68-a350-e88a6807e3d8" width="40%" height="20%">
+<img alt="카카오페이3" src = "https://github.com/tostart10/hiboard/assets/113872709/53124c56-e0a1-4b68-a350-e88a6807e3d8" width="30%" height="450">
 
 
 
-<img width="30%" alt="카카오페이4" src="https://github.com/tostart10/hiboard/assets/113872709/e2431925-3a87-4cd9-a5b6-b23bb94c9f2f" height="400">
+<img width="30%" alt="카카오페이4" src="https://github.com/tostart10/hiboard/assets/113872709/e2431925-3a87-4cd9-a5b6-b23bb94c9f2f" height="450">
 
-<img alt="카카오페이5" src = "https://github.com/tostart10/hiboard/assets/113872709/8dc565f3-6f25-4db7-b641-3a0c5f8ebfaa" width="30%" height="400">
+<img alt="카카오페이5" src = "https://github.com/tostart10/hiboard/assets/113872709/8dc565f3-6f25-4db7-b641-3a0c5f8ebfaa" width="30%" height="450">
 
 
-<img width="40%" alt="카카오페이6" src="https://github.com/tostart10/hiboard/assets/113872709/3bbda30e-4893-4f50-972e-6053baae7fdb" height="20%">
+<img width="40%" alt="카카오페이6" src="https://github.com/tostart10/hiboard/assets/113872709/3bbda30e-4893-4f50-972e-6053baae7fdb" height="15%">
 
 
 
