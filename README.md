@@ -87,4 +87,4 @@ KakaoPay API 사용한 간편 단건 결제 구현하기
 
 
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=00c9f2&height=150&section=footer&text=%20&fontSize=40" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=99ccff&height=150&section=footer&text=%20&fontSize=40" />
