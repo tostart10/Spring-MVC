@@ -16,8 +16,6 @@
 
 
 
-<div align="center">
- 
 
 
 
@@ -175,7 +173,6 @@
 수정 후 홈으로 돌아가 수정 확인
 <img width="75%" height="75%" alt="관리자-정보수정후 홈에서확인" src="https://github.com/tostart10/hiboard/assets/113872709/d557d90f-5a3c-4937-9203-2ac045b4bdc1">
 
-</div>
 
 
 
