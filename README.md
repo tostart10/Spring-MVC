@@ -157,8 +157,9 @@
 <img width="75%" height="75%" alt="관리자-정보수정확인" src="https://github.com/tostart10/hiboard/assets/113872709/bdec90fd-4e1f-480b-83eb-83df7b18dd24">
 
 <img width="75%" height="75%" alt="관리자-정보수정완료" src="https://github.com/tostart10/hiboard/assets/113872709/651fd793-b146-438d-8dc9-dde0f4d59fcb">
+<br/><br/><br/>
 
-수정 후 홈으로 돌아가 수정 확인
+6. 수정 후 홈으로 돌아면 수정된 것을 확인할 수 있다
 <img width="75%" height="75%" alt="관리자-정보수정후 홈에서확인" src="https://github.com/tostart10/hiboard/assets/113872709/d557d90f-5a3c-4937-9203-2ac045b4bdc1">
 <br/><br/><br/><br/><br/>
 
