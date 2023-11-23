@@ -152,7 +152,8 @@
 
 
 5. 회원정보 수정/관리
-<img width="75%" height="75%"" alt="관리자-회원정보관리" src="https://github.com/tostart10/hiboard/assets/113872709/784f92b7-d08a-4094-888a-7ea6e882080b">
+<img width="75%" height="75%" alt="관리자-회원정보관리" src="https://github.com/tostart10/hiboard/assets/113872709/784f92b7-d08a-4094-888a-7ea6e882080b">
+
 
 <img width="75%" height="75%" alt="관리자-정보수정확인" src="https://github.com/tostart10/hiboard/assets/113872709/bdec90fd-4e1f-480b-83eb-83df7b18dd24">
 
