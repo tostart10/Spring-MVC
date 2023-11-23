@@ -16,6 +16,8 @@
 
 
 
+<div align="center">
+ 
 
 
 
@@ -164,14 +166,18 @@
 
 
 5. 회원정보 수정/관리
-<img width="854" alt="관리자-회원정보관리" src="https://github.com/tostart10/hiboard/assets/113872709/784f92b7-d08a-4094-888a-7ea6e882080b">
+<img width="75%" height="75%"" alt="관리자-회원정보관리" src="https://github.com/tostart10/hiboard/assets/113872709/784f92b7-d08a-4094-888a-7ea6e882080b">
 
-<img width="790" alt="관리자-정보수정확인" src="https://github.com/tostart10/hiboard/assets/113872709/bdec90fd-4e1f-480b-83eb-83df7b18dd24">
+<img width="75%" height="75%" alt="관리자-정보수정확인" src="https://github.com/tostart10/hiboard/assets/113872709/bdec90fd-4e1f-480b-83eb-83df7b18dd24">
 
-<img width="706" alt="관리자-정보수정완료" src="https://github.com/tostart10/hiboard/assets/113872709/651fd793-b146-438d-8dc9-dde0f4d59fcb">
+<img width="75%" height="75%" alt="관리자-정보수정완료" src="https://github.com/tostart10/hiboard/assets/113872709/651fd793-b146-438d-8dc9-dde0f4d59fcb">
 
 수정 후 홈으로 돌아가 수정 확인
-<img width="937" alt="관리자-정보수정후 홈에서확인" src="https://github.com/tostart10/hiboard/assets/113872709/d557d90f-5a3c-4937-9203-2ac045b4bdc1">
+<img width="75%" height="75%" alt="관리자-정보수정후 홈에서확인" src="https://github.com/tostart10/hiboard/assets/113872709/d557d90f-5a3c-4937-9203-2ac045b4bdc1">
+
+</div>
+
+
 
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=99ccff&height=150&section=footer&text=%20&fontSize=40" />
