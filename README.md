@@ -31,17 +31,12 @@
 
 #### :pencil: 관리자 프로젝트를 구현해 사용자 데이터 리스트를 게시판 형태로 볼 수 있도록 하고 회원들의 정보를 수정할 수 있도록 하기
 <br>
-
-
-
+<br>
 
 
 1. 로그인
 <img width="75%"  alt="로그인" src="https://github.com/tostart10/hiboard/assets/113872709/0b96abb9-3fc8-4da2-bb27-c78d6d9cf584" height="75%">
-
-
-
-
+<br>
 
 2. 로그인 성공시 알림
 <img width="75%"  alt="로그인 성공" src="https://github.com/tostart10/hiboard/assets/113872709/a6cb224a-c0b2-445a-a951-1da99f6ba69f" height="75%">
