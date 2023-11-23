@@ -32,19 +32,22 @@
 
 
 
-
+1. 로그인
 <img width="75%"  alt="로그인" src="https://github.com/tostart10/hiboard/assets/113872709/0b96abb9-3fc8-4da2-bb27-c78d6d9cf584" height="75%">
 
 
+2. 로그인 성공시 알림
 <img width="75%"  alt="로그인 성공" src="https://github.com/tostart10/hiboard/assets/113872709/a6cb224a-c0b2-445a-a951-1da99f6ba69f" height="75%">
 
-
+3. 로그인을 성공하면 알림이 뜨고 게시판 홈으로 이동하게 된다.
 <img width="75%"  alt="게시판 홈" src="https://github.com/tostart10/hiboard/assets/113872709/23cbd5a7-068b-42df-aeb7-a1b2ea0c5531" height="75%">
 
 
+4. 게시물 작성버튼 눌러 게시물 작성
 <img width="75%" alt="게시물 쓰기" src="https://github.com/tostart10/hiboard/assets/113872709/974650b7-8e9d-4d68-aeed-277564abf4b4"  height="75%">
 
 
+5. 게시물 리스트에서 작성된 게시물을 누르면
 <img width="75%"  alt="게시물 보기" src="https://github.com/tostart10/hiboard/assets/113872709/9b3a8a8d-e1a4-4e98-9df6-8128e139cf33" height="75%">
 
 
