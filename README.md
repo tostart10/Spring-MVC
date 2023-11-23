@@ -45,28 +45,33 @@
 3. 로그인을 성공하면 알림이 뜨고 게시판 홈으로 이동하게 된다.
 <img width="75%"  alt="게시판 홈" src="https://github.com/tostart10/hiboard/assets/113872709/23cbd5a7-068b-42df-aeb7-a1b2ea0c5531" height="75%">
 <br>
-
+<br>
 4. 게시물 작성버튼 눌러 게시물 작성
 <img width="75%" alt="게시물 쓰기" src="https://github.com/tostart10/hiboard/assets/113872709/974650b7-8e9d-4d68-aeed-277564abf4b4"  height="75%">
+<br>
 <br>
 
 5. 게시물 리스트에서 작성된 게시물을 누르면 게시물의 작성자, 작성날짜 제목, 내용 등을 확인 할 수 있고 [첨부파일]을 클릭하면 게시물에 첨부된 파일을 다운받을 수 있다.
 <img width="75%"  alt="게시물 보기" src="https://github.com/tostart10/hiboard/assets/113872709/9b3a8a8d-e1a4-4e98-9df6-8128e139cf33" height="75%">
+<br>
 <br>
 
 6. 작성된 게시물 중 본인이 작성한 게시물일 경우 게시물 수정 가능
    게시물 수정을 누르면 게시물의 제목과 내용, 첨부파일을 수정할 수 있다.
 <img alt="게시물 수정" src = "https://github.com/tostart10/hiboard/assets/113872709/665a1cc0-1a47-4391-bcef-8797616451c7" width="75%" height="75%">
 <br>
+<br>
 
 7. 작성된 게시물에 대해 답변 게시물 작성 기능
    댓글과 비슷하지만 댓글은 짧은 글만 남길 수 있는 반면 답글의 경우 제목, 내용, 첨부파일까지 첨부할 수 있다.
 <img alt="게시물 답변 작성" src = "https://github.com/tostart10/hiboard/assets/113872709/820dac41-8a67-4ed2-84b9-318d808ef3a3" width="75%" height="75%">
 <br>
+<br>
 
 8. 답변이 정상적으로 등록되면 답변완료 알림창이 뜬다.
 <img alt="답변완료 알림창" src = "https://github.com/tostart10/hiboard/assets/113872709/c084270f-5e1e-4c9b-8f83-4e17173b732f" width="75%" height="75%">
-
+<br>
+<br>
 
 
 
